@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &280001889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 280001890}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &280001890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001889}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.699, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1090973176}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +210,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 37.5
+  field of view: 53.6
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -206,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.79, z: -10}
+  m_LocalPosition: {x: 0, y: 2.84, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -388,7 +419,7 @@ GameObject:
   - component: {fileID: 804522340}
   - component: {fileID: 804522339}
   - component: {fileID: 804522338}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +537,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.07, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -612,11 +643,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6332874602829160683, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      propertyPath: _downForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6332874602829160683, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      propertyPath: _groundCheck
+      value: 
+      objectReference: {fileID: 280001890}
+    - target: {fileID: 6332874602829160683, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      propertyPath: _groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5275050412348637482, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 280001890}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+--- !u!4 &1090973176 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5275050412348637482, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+  m_PrefabInstance: {fileID: 906113083}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
