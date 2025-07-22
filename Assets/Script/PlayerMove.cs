@@ -4,16 +4,19 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 public class PlayerMove : MonoBehaviour
 {
     float _moveSpeed = 3.5f;
-    [SerializeField] float _downForce = 5f;
-    [SerializeField] Transform _groundCheck;
-    [SerializeField] float _groundCheckRadius = 0.2f;
-    [SerializeField] LayerMask _groundLayer;
-    bool _isGrounded = false;
-
     float _animSpeed = 0f;
+    [SerializeField] float _downForce = 10f;
+    [SerializeField] float _jumpForce = 5f;
     bool _isRunning = false;
     Rigidbody2D _rb;
     Animator _anim;
+
+    [Header("GroundCheck")]
+    [SerializeField] Transform _groundCheck;
+    [SerializeField] float _groundCheckRadius = .2f;
+    [SerializeField] LayerMask _groundLayer;
+    bool _isGrounded = false;
+
 
     void Start()
     {
@@ -24,12 +27,13 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         GroundCheck();
-        if (Input.GetButtonDown("Jump") && _isGrounded) Jump();
 
         float _xHor = Input.GetAxis("Horizontal");
         _isRunning = Input.GetButton("Sprint");
-        _rb.linearVelocity = new Vector2(_xHor * _moveSpeed, _rb.linearVelocity.y);
-        _rb.linearVelocityX = _xHor * _moveSpeed * (_isRunning ? 2 : 1);
+
+        if (Input.GetButtonDown("Jump")) Jump();
+
+        _rb.linearVelocity = new Vector2(_xHor * _moveSpeed * (_isRunning ? 2 : 1), _rb.linearVelocity.y);
 
         if (_xHor > 0)
         {
@@ -48,10 +52,9 @@ public class PlayerMove : MonoBehaviour
         {
             _animSpeed = 0f;
         }
-        _anim.SetFloat("_speed", _animSpeed);
-    }
+        _anim.SetFloat("_speed", _animSpeed); 
 
-    void Jump() => _rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+    }
 
     private void FixedUpdate()
     {
@@ -64,17 +67,21 @@ public class PlayerMove : MonoBehaviour
         _anim.SetBool("_isAir", !_isGrounded);
     }
 
-    void AddDownForce()
+    private void OnDrawGizmosSelected()
     {
-        _rb.AddForce(Vector2.down * _downForce);
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (_groundCheck != null)
+        if(_groundCheck != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
         }
+    }
+
+    void Jump()
+    {
+        _rb.AddForce(Vector2.up * _jumpForce , ForceMode2D.Impulse);
+    }
+    void AddDownForce()
+    {
+        _rb.AddForce(Vector2.down * _downForce);
     }
 }
