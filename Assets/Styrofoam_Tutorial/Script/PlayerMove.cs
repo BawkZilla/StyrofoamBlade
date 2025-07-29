@@ -29,7 +29,6 @@ public class PlayerMove : MonoBehaviour
     bool _isRolling = false;
     bool _canRoll = true;
 
-
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -39,11 +38,8 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         GroundCheck();
-        Move();
-<<<<<<< Updated upstream:Assets/Styrofoam_Tutorial/Script/PlayerMove.cs
-=======
         Roll();
->>>>>>> Stashed changes:Assets/Script/PlayerMove.cs
+        Move();
         Jump();
     }
 
@@ -60,6 +56,7 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
+
         if (_isRolling) return;
 
         _xHor = Input.GetAxis("Horizontal");
@@ -74,60 +71,6 @@ public class PlayerMove : MonoBehaviour
         else if (_xHor < 0)
         {
             _playerDir = -1;
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-
-        if (_xHor != 0)
-        {
-            _animSpeed = _isRunning ? 1f : 0.5f;
-        }
-        else
-        {
-            _animSpeed = 0f;
-        }
-        _anim.SetFloat("_speed", _animSpeed);
-    }
-
-    void Roll()
-    {
-        if(Input.GetKeyDown(KeyCode.LeftControl) && _canRoll)
-        {
-            StartCoroutine(RollCoroutine());
-        }
-    }
-
-    IEnumerator RollCoroutine()
-    {
-        _anim.Play("Roll");
-
-        _isRolling = true;
-        _canRoll = false;
-
-        _rb.linearVelocityX = _playerDir * _rollPower;
-
-        yield return new WaitForSeconds(_rollDuration);
-
-        _rb.linearVelocity = Vector2.zero;
-        _isRolling = false;
-
-        yield return new WaitForSeconds(_rollCooldown);
-
-        _canRoll = true;
-
-    }
-
-    void Move()
-    {
-        _xHor = Input.GetAxis("Horizontal");
-        _isRunning = Input.GetButton("Sprint");
-        _rb.linearVelocity = new Vector2(_xHor * _moveSpeed * (_isRunning ? 2 : 1), _rb.linearVelocity.y);
-
-        if (_xHor > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (_xHor < 0)
-        {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
@@ -161,5 +104,33 @@ public class PlayerMove : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
         }
+    }
+
+    void Roll()
+    {
+        //컨트롤 키 입력을 통해 구르기 코루틴 실행
+        if (Input.GetKeyDown(KeyCode.LeftControl) && _canRoll)
+        {
+            StartCoroutine(RollCoroutine());
+        }
+    }
+
+    IEnumerator RollCoroutine()
+    {
+        _anim.Play("Roll");
+
+        _isRolling = true;
+        _canRoll = false;
+
+        _rb.linearVelocityX = _playerDir * _rollPower;
+
+        yield return new WaitForSeconds(_rollDuration);
+
+        _rb.linearVelocity = Vector2.zero;
+        _isRolling = false;
+
+        yield return new WaitForSeconds(_rollCooldown);
+
+        _canRoll = true;
     }
 }

@@ -551,11 +551,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-<<<<<<< Updated upstream
-  field of view: 80
-=======
   field of view: 70
->>>>>>> Stashed changes
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -630,13 +626,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< Updated upstream
-    - target: {fileID: 300408297392702807, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 9ba438b6dea95ec409a1499cac351d38, type: 2}
-=======
->>>>>>> Stashed changes
     - target: {fileID: 2563819264598784467, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -681,21 +670,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-    - target: {fileID: 6332874602829160683, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
-      propertyPath: _downForce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6332874602829160683, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
-      propertyPath: _jumpForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6332874602829160683, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
-      propertyPath: _moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-=======
->>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -889,11 +863,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-<<<<<<< Updated upstream
-    FieldOfView: 80
-=======
     FieldOfView: 70
->>>>>>> Stashed changes
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
