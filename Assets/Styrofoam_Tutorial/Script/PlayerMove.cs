@@ -40,10 +40,7 @@ public class PlayerMove : MonoBehaviour
     {
         GroundCheck();
         Move();
-<<<<<<< Updated upstream:Assets/Styrofoam_Tutorial/Script/PlayerMove.cs
-=======
         Roll();
->>>>>>> Stashed changes:Assets/Script/PlayerMove.cs
         Jump();
     }
 
@@ -114,32 +111,6 @@ public class PlayerMove : MonoBehaviour
 
         _canRoll = true;
 
-    }
-
-    void Move()
-    {
-        _xHor = Input.GetAxis("Horizontal");
-        _isRunning = Input.GetButton("Sprint");
-        _rb.linearVelocity = new Vector2(_xHor * _moveSpeed * (_isRunning ? 2 : 1), _rb.linearVelocity.y);
-
-        if (_xHor > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (_xHor < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-
-        if (_xHor != 0)
-        {
-            _animSpeed = _isRunning ? 1f : 0.5f;
-        }
-        else
-        {
-            _animSpeed = 0f;
-        }
-        _anim.SetFloat("_speed", _animSpeed);
     }
 
     void Jump()
