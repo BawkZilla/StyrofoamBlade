@@ -87,9 +87,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  _rollPower: 0
-  _rollDuration: 0
-  _rollCooldown: 0
+  _rollPower: 10
+  _rollDuration: 0.4
+  _rollCooldown: 1
 --- !u!50 &1734721024808086893
 Rigidbody2D:
   serializedVersion: 5
