@@ -80,16 +80,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984b4b99dae7f4742b77dc70f7fb0f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   _downForce: 10
   _jumpForce: 7
+=======
+  _moveSpeed: 5
+  _downForce: 12
+  _jumpForce: 10
+>>>>>>> Stashed changes
   _groundCheck: {fileID: 902299925488002770}
   _groundCheckRadius: 0.2
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+<<<<<<< Updated upstream
   _rollPower: 10
   _rollDuration: 0.4
   _rollCooldown: 1
+=======
+  _rollPower: 15
+  _rollDuration: 0.4
+  _rollCooldown: 0.5
+>>>>>>> Stashed changes
 --- !u!50 &1734721024808086893
 Rigidbody2D:
   serializedVersion: 5
@@ -127,7 +139,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9ba438b6dea95ec409a1499cac351d38, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

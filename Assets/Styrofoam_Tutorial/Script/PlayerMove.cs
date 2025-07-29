@@ -19,6 +19,16 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] LayerMask _groundLayer;
     bool _isGrounded = false;
 
+    [Header("Roll")]
+    [SerializeField] float _rollPower = 15f;
+    [SerializeField] float _rollDuration = .4f;
+    [SerializeField] float _rollCooldown = .5f;
+
+    int _playerDir = 1;
+
+    bool _isRolling = false;
+    bool _canRoll = true;
+
 
     void Start()
     {
@@ -30,6 +40,10 @@ public class PlayerMove : MonoBehaviour
     {
         GroundCheck();
         Move();
+<<<<<<< Updated upstream:Assets/Styrofoam_Tutorial/Script/PlayerMove.cs
+=======
+        Roll();
+>>>>>>> Stashed changes:Assets/Script/PlayerMove.cs
         Jump();
     }
 
@@ -44,13 +58,62 @@ public class PlayerMove : MonoBehaviour
         _anim.SetBool("_isAir", !_isGrounded);
     }
 
-    private void OnDrawGizmosSelected()
+    void Move()
     {
-        if(_groundCheck != null)
+        if (_isRolling) return;
+
+        _xHor = Input.GetAxis("Horizontal");
+        _isRunning = Input.GetButton("Sprint");
+        _rb.linearVelocity = new Vector2(_xHor * _moveSpeed * (_isRunning ? 2 : 1), _rb.linearVelocity.y);
+
+        if (_xHor > 0)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
+            _playerDir = 1;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+        else if (_xHor < 0)
+        {
+            _playerDir = -1;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        if (_xHor != 0)
+        {
+            _animSpeed = _isRunning ? 1f : 0.5f;
+        }
+        else
+        {
+            _animSpeed = 0f;
+        }
+        _anim.SetFloat("_speed", _animSpeed);
+    }
+
+    void Roll()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftControl) && _canRoll)
+        {
+            StartCoroutine(RollCoroutine());
+        }
+    }
+
+    IEnumerator RollCoroutine()
+    {
+        _anim.Play("Roll");
+
+        _isRolling = true;
+        _canRoll = false;
+
+        _rb.linearVelocityX = _playerDir * _rollPower;
+
+        yield return new WaitForSeconds(_rollDuration);
+
+        _rb.linearVelocity = Vector2.zero;
+        _isRolling = false;
+
+        yield return new WaitForSeconds(_rollCooldown);
+
+        _canRoll = true;
+
     }
 
     void Move()
@@ -89,5 +152,14 @@ public class PlayerMove : MonoBehaviour
     void AddDownForce()
     {
         _rb.AddForce(Vector2.down * _downForce);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_groundCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
+        }
     }
 }
