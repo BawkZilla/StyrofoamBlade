@@ -19,8 +19,10 @@ MonoBehaviour:
   MaxHP: 100
   Damage: 20
   MoveSpeed: 80
+  PatrolSpeed: 5
+  ChaseSpeed: 10
   EnemySightType: 1
   SightBoxSize: {x: 4.47, y: 1.98}
-  SightRadius: 0
+  SightRadius: 10
   SightAngle: 241
   AttackRange: 5

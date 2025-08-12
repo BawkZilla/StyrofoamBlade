@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyStateManager : MonoBehaviour
 {
     public IEnemyState CurrentState;
-    public EnemyData EnemyData;
 
     public Transform Avatar;
     [HideInInspector]
@@ -12,10 +11,6 @@ public class EnemyStateManager : MonoBehaviour
     public Rigidbody2D _rb;
 
     float _maxHP, _currentHP;
-
-
-
-
 
     void Start()
     {
@@ -26,7 +21,7 @@ public class EnemyStateManager : MonoBehaviour
     void AllocateComponents()
     {
         _rb = GetComponent<Rigidbody2D>();
-        Player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        Player = FindAnyObjectByType<PlayerMove>()?.transform;
     }
 
     void Update()

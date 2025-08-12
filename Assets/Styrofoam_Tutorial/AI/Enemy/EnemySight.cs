@@ -5,13 +5,18 @@ public class EnemySight : MonoBehaviour
     [Header("Sight")]
     public Transform eyeTransform;
 
-    EnemyStateManager _stateManager;
+    EnemyDataManager _dataManager;
     EnemyData EnemyData;
 
     void Start()
     {
-        _stateManager = GetComponent<EnemyStateManager>();
-        EnemyData = _stateManager.EnemyData;
+        _dataManager = GetComponent<EnemyDataManager>();
+        EnemyData = _dataManager._enemyData;
+    }
+
+    private void FixedUpdate()
+    {
+        if (IsPlayerInRange()) return;
     }
 
     public bool IsPlayerInRange()
@@ -81,7 +86,7 @@ public class EnemySight : MonoBehaviour
 
     bool IsTargetInSightAngle(Transform target, float fov)
     {
-        Vector2 toTarget = ((Vector2)target.position - GetEyePosition()).normalized;
+        Vector2 toTarget = ((Vector2)target.position + GetEyePosition()).normalized;
         Vector2 forward = transform.localScale.x >= 0 ? Vector2.right : Vector2.left;
 
         float dot = Vector2.Dot(forward, toTarget);
@@ -122,7 +127,7 @@ public class EnemySight : MonoBehaviour
         }
         else if (EnemyData.EnemySightType == E_SightType.Circle)
         {
-            Gizmos.DrawWireSphere(origin + GetForwardOffset(), EnemyData.SightRadius);
+            Gizmos.DrawWireSphere(origin - GetForwardOffset(), EnemyData.SightRadius);
         }
 
         float angle = EnemyData.SightAngle;

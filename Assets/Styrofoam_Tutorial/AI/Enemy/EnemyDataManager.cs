@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyDataManager : MonoBehaviour
 {
 
-    [SerializeField] EnemyData _enemyData;
+    public EnemyData _enemyData;
     void Start()
     {
         GetEnemyData();

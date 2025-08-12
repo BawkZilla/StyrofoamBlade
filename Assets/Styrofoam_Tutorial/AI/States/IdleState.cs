@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class IdleState : IEnemyState
 {
+    float _idleTime;
+    float _timer;
+
     public void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("[Idle State] : State Entered");
+        enemy.GetComponent<Animator>().Play("Idle");
+        _idleTime = Random.Range(1f, 4f);
+        _timer = 0f;
     }
 
     public void ExitState(EnemyStateManager enemy)
@@ -14,9 +19,11 @@ public class IdleState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        _timer += Time.deltaTime;
+        if(_timer >= _idleTime)
         {
             enemy.TransitionToState(new PatrolState());
+            return;
         }
     }
 

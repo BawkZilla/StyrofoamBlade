@@ -15,6 +15,8 @@ public class EnemyData : ScriptableObject
     public float MaxHP;
     public float Damage;
     public float MoveSpeed;
+    public float PatrolSpeed;
+    public float ChaseSpeed;
 
     public E_SightType EnemySightType;
     public Vector2 SightBoxSize;
