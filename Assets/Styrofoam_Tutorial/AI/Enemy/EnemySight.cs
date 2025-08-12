@@ -13,6 +13,7 @@ public class EnemySight : MonoBehaviour
         _stateManager = GetComponent<EnemyStateManager>();
         EnemyData = _stateManager.EnemyData;
     }
+
     public bool IsPlayerInRange()
     {
         Vector2 origin = transform.position;

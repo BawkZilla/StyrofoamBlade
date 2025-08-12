@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyGroundCheck : MonoBehaviour
 {
     EnemyStateManager _stateManager;
-    EnemyData EnemyData;
 
     [Header("GroundChecker")]
     public LayerMask GroundLayer;
@@ -13,7 +12,6 @@ public class EnemyGroundCheck : MonoBehaviour
     private void Start()
     {
         _stateManager = GetComponent<EnemyStateManager>();
-        EnemyData = _stateManager.EnemyData;
     }
 
     void Flip()
