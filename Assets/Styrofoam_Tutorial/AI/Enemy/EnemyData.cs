@@ -18,11 +18,6 @@ public class EnemyData : ScriptableObject
     public float PatrolSpeed;
     public float ChaseSpeed;
 
-    public E_SightType EnemySightType;
-    public Vector2 SightBoxSize;
-    public float SightRadius;
-    [Range(0, 360)]
-    public float SightAngle = 120f;
-
+    public float SightRange;
     public float AttackRange;
 }

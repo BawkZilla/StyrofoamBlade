@@ -21,6 +21,12 @@ public class PatrolState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
+        if (enemy.GetComponent<EnemySight>().IsPlayerInRange())
+        {
+            enemy.TransitionToState(new ChaseState());
+            return;
+        }
+
         if (!_isPatrolling)
         {
             enemy.GetComponent<EnemyFlip>().Flip();

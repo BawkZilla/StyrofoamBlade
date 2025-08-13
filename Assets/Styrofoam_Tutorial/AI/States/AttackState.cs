@@ -4,7 +4,7 @@ public class AttackState : IEnemyState
 {
     public void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("[Attack State] : State Entered");
+        enemy.GetComponent<Animator>().Play("Attack");
     }
 
     public void ExitState(EnemyStateManager enemy)
@@ -14,9 +14,23 @@ public class AttackState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        AnimatorStateInfo stateInfo = enemy.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+
+        if (!stateInfo.IsName("Attack"))
         {
-            enemy.TransitionToState(new IdleState());
+            if (enemy.GetComponent<EnemySight>().IsPlayerInRange())
+            {
+                enemy.TransitionToState(new ChaseState());
+                return;
+            }
+            else
+            {
+                if (Random.value < .5f)
+                    enemy.TransitionToState(new IdleState());
+                else
+                    enemy.TransitionToState(new PatrolState());
+                return;
+            }
         }
     }
 }

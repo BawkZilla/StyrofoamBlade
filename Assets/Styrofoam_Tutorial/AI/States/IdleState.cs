@@ -19,6 +19,11 @@ public class IdleState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
+        if (enemy.GetComponent<EnemySight>().IsPlayerInRange())
+        {
+            enemy.TransitionToState(new ChaseState());
+            return;
+        }
         _timer += Time.deltaTime;
         if(_timer >= _idleTime)
         {
