@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerStat : MonoBehaviour
+public class PlayerStat : StatBehaviour
 {
     [Header("HP")]
     public float _maxHP = 100F;
@@ -16,7 +16,7 @@ public class PlayerStat : MonoBehaviour
         _currentSkillGauge = 0;
     }
 
-    public void TakeDamage(float amount)
+    public override void TakeDamage(float amount)
     {
         _currentHP = Mathf.Max(_currentHP - amount, 0f);
         if(_currentHP <= 0f)

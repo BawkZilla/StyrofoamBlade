@@ -19,6 +19,11 @@ public class IdleState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
+        if (enemy.GetComponent<EnemyStat>()._currentHP <= 0)
+        {
+            return;
+        }
+
         if (enemy.GetComponent<EnemySight>().IsPlayerInRange())
         {
             enemy.TransitionToState(new ChaseState());

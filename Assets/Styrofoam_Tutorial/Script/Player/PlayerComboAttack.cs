@@ -22,9 +22,12 @@ public class PlayerComboAttack : MonoBehaviour
     bool _queuedNextCombo;
     float _lastInputTime;
 
+    MeleeAttackManager _meleeAttack;
+
     private void Start()
     {
         _anim = GetComponent<Animator>();
+        _meleeAttack = GetComponentInChildren<MeleeAttackManager>();
     }
 
     void Update()
@@ -38,6 +41,9 @@ public class PlayerComboAttack : MonoBehaviour
         if (_currentCombo >= 0)
             UpdateCombo();
     }
+
+    public void StartMeleeAttack() => _meleeAttack.BeginAttack();
+    public void EndMeleeAttack() => _meleeAttack.EndAttack();
 
     void StartComboAttack()
     {

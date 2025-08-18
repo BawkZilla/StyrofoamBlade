@@ -16,6 +16,11 @@ public class AttackState : IEnemyState
     {
         AnimatorStateInfo stateInfo = enemy.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
 
+        if(enemy.GetComponent<EnemyStat>()._currentHP <= 0)
+        {
+            return;
+        }
+
         if (!stateInfo.IsName("Attack"))
         {
             if (enemy.GetComponent<EnemySight>().IsPlayerInRange())

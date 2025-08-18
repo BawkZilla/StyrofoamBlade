@@ -17,6 +17,11 @@ public class ChaseState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
+        if (enemy.GetComponent<EnemyStat>()._currentHP <= 0)
+        {
+            return;
+        }
+
         _chaseTimer += Time.deltaTime;
         Transform _player = enemy.Player;
 

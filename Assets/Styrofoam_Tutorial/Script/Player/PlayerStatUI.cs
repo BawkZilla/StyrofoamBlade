@@ -22,9 +22,6 @@ public class PlayerStatUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J)) _playerStat.TakeDamage(10);
-        if (Input.GetKeyDown(KeyCode.H)) _playerStat.Heal(10);
-
         SyncStatUI();
     }
 
