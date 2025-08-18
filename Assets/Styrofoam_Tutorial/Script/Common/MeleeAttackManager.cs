@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MeleeAttackManager : MonoBehaviour
 {
-    [Header("히트 범위 설정")]
+    [Header("Set Hit Range")]
     public Vector2 boxSize = new Vector2(1.5f, 0.5f);
     public Vector2 boxOffset = new Vector2(1.0f, 0f); 
     public float boxAngle = 0f; 
