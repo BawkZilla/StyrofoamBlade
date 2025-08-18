@@ -1,15 +1,11 @@
 using UnityEngine;
 public class EnemyStat : StatBehaviour
 {
-    [Header("HP")]
-    public float _maxHP = 100F;
-    public float _currentHP;
-
     MeleeAttackManager _meleeAttack;
 
     private void Awake()
     {
-        _currentHP = _maxHP;
+        CurrentHP = MaxHP;
         _meleeAttack = GetComponentInChildren<MeleeAttackManager>();
     }
 
@@ -17,14 +13,14 @@ public class EnemyStat : StatBehaviour
     public void EndMeleeAttack() => _meleeAttack.EndAttack();
     public override void TakeDamage(float amount)
     {
-        _currentHP = Mathf.Max(_currentHP - amount, 0f);
-        if (_currentHP <= 0f)
+        CurrentHP = Mathf.Max(CurrentHP - amount, 0f);
+        if (CurrentHP <= 0f)
         {
             Die();
         }
     }
 
-    void Die()
+    public override void Die()
     {
         GetComponent<Animator>().Play("Die");
         Destroy(gameObject, 1f);
@@ -32,6 +28,6 @@ public class EnemyStat : StatBehaviour
 
     public void Heal(float amount)
     {
-        _currentHP = Mathf.Min(_currentHP + amount, _maxHP);
+        CurrentHP = Mathf.Min(CurrentHP + amount, MaxHP);
     }
 }

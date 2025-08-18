@@ -11,7 +11,8 @@ public class MeleeAttackManager : MonoBehaviour
 
     List<GameObject> _hitObjs = new List<GameObject>();
 
-    bool isAttacking = false;
+    [HideInInspector]
+    public bool isAttacking { get; private set; }
 
     void FixedUpdate()
     {

@@ -17,7 +17,7 @@ public class ChaseState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
-        if (enemy.GetComponent<EnemyStat>()._currentHP <= 0)
+        if (enemy.GetComponent<StatBehaviour>().CurrentHP <= 0)
         {
             return;
         }
@@ -44,9 +44,9 @@ public class ChaseState : IEnemyState
 
             if(dir.x != 0)
             {
-                Vector3 scale = enemy.transform.localScale;
+                Vector3 scale = enemy.transform.GetChild(0).localScale;
                 scale.x = -Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
-                enemy.transform.localScale = scale;
+                enemy.transform.GetChild(0).transform.localScale = scale;
             }
 
             float dist = Vector2.Distance(enemy.transform.position, _player.position);

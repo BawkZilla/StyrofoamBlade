@@ -21,7 +21,7 @@ public class PatrolState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
-        if (enemy.GetComponent<EnemyStat>()._currentHP <= 0)
+        if (enemy.GetComponent<StatBehaviour>().CurrentHP <= 0)
         {
             return;
         }
@@ -37,7 +37,7 @@ public class PatrolState : IEnemyState
             enemy.GetComponent<EnemyFlip>().Flip();
             _isPatrolling = true;
         }
-        Vector2 dir = enemy.transform.localScale.x < 0 ? Vector2.right : Vector2.left;
+        Vector2 dir = enemy.transform.GetChild(0).localScale.x < 0 ? Vector2.right : Vector2.left;
         _moveTimer += Time.deltaTime;
         enemy._rb.linearVelocity = new Vector2(dir.x * enemy.GetComponent<EnemyDataManager>()._enemyData.PatrolSpeed, 0f);
 

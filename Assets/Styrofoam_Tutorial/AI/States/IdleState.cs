@@ -19,7 +19,7 @@ public class IdleState : IEnemyState
 
     public void UpdateState(EnemyStateManager enemy)
     {
-        if (enemy.GetComponent<EnemyStat>()._currentHP <= 0)
+        if (enemy.GetComponent<StatBehaviour>().CurrentHP <= 0)
         {
             return;
         }

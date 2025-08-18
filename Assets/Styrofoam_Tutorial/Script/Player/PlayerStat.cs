@@ -2,24 +2,17 @@ using UnityEngine;
 
 public class PlayerStat : StatBehaviour
 {
-    [Header("HP")]
-    public float _maxHP = 100F;
-    public float _currentHP;
-
-    [Header("Skill Gauge")]
-    public float _maxSkillGauge = 100f;
-    public float _currentSkillGauge;
 
     private void Awake()
     {
-        _currentHP = _maxHP;
-        _currentSkillGauge = 0;
+        CurrentHP = MaxHP;
+        CurrentSkillGauge = 0;
     }
 
     public override void TakeDamage(float amount)
     {
-        _currentHP = Mathf.Max(_currentHP - amount, 0f);
-        if(_currentHP <= 0f)
+        CurrentHP = Mathf.Max(CurrentHP - amount, 0f);
+        if(CurrentHP <= 0f)
         {
             Die();
         }
@@ -27,10 +20,10 @@ public class PlayerStat : StatBehaviour
 
     public void Heal(float amount)
     {
-        _currentHP = Mathf.Min(_currentHP + amount, _maxHP);
+        CurrentHP = Mathf.Min(CurrentHP + amount, MaxHP);
     }
 
-    void Die()
+    public override void Die()
     {
         print("Die");
     }

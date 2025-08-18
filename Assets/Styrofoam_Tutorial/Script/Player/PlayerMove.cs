@@ -56,7 +56,6 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-
         if (_isRolling) return;
 
         _xHor = Input.GetAxis("Horizontal");
@@ -108,7 +107,6 @@ public class PlayerMove : MonoBehaviour
 
     void Roll()
     {
-        //컨트롤 키 입력을 통해 구르기 코루틴 실행
         if (Input.GetKeyDown(KeyCode.LeftControl) && _canRoll)
         {
             StartCoroutine(RollCoroutine());
