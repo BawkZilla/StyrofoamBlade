@@ -2443,8 +2443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e44ce0efe5f5de44986ee69a3922391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parryingSucessTimeRange: {x: 0, y: 0.2}
-  _normalGuardTime: 0.2
+  _parryingSucessTimeRange: {x: 0.08, y: 0.3}
+  _normalGuardTime: 0.3
+  isParrySuccess: 0
+  isNormalGuard: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
