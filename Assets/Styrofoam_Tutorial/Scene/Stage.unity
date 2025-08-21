@@ -1146,7 +1146,7 @@ Transform:
   m_GameObject: {fileID: 1001243046}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.37, z: -10}
+  m_LocalPosition: {x: 0, y: -3.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1367,6 +1367,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 300408297392702807, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 902299925488002770, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.23
+      objectReference: {fileID: 0}
     - target: {fileID: 1675050547821679213, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
       propertyPath: m_Time
       value: 0.2
@@ -1437,7 +1445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5275050412348637482, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.87
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 5275050412348637482, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1470,6 +1478,10 @@ PrefabInstance:
     - target: {fileID: 5275050412348637482, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506316748564553925, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.91
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1567,6 +1579,51 @@ MonoBehaviour:
   boxOffset: {x: 0.15, y: 0.06}
   boxAngle: 21.94
   damage: 10
+--- !u!1 &1374625237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1374625239}
+  - component: {fileID: 1374625238}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1374625238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374625237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565114461a23d7a4fbfdd47d0520f888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParryEffect: {fileID: 2353600328335836179, guid: ceec7516237b4104b94300043ca39784, type: 3}
+--- !u!4 &1374625239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374625237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1449679302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1970,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 6.5, z: -10}
+  FollowOffset: {x: 0, y: 4.4, z: -10}
 --- !u!114 &1691598535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,7 +2023,7 @@ Transform:
   m_GameObject: {fileID: 1691598533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.37, z: -10}
+  m_LocalPosition: {x: 0, y: -3.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2443,8 +2500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e44ce0efe5f5de44986ee69a3922391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parryingSucessTimeRange: {x: 0, y: 0.2}
+  _parryingSuccessTimeRange: {x: 0, y: 0.2}
   _normalGuardTime: 0.2
+  isParrySuccess: 0
+  isNormalGuard: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2455,3 +2514,4 @@ SceneRoots:
   - {fileID: 573272403}
   - {fileID: 990739190}
   - {fileID: 376866184296696368}
+  - {fileID: 1374625239}

@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class PlayerGuard : MonoBehaviour
 {
-
     [HideInInspector]
     public bool isGuard;
     [HideInInspector]
     public float GuardingTime = 0f;
 
-    // Update is called once per frame
     void Update()
     {
         isGuard = Input.GetMouseButton(1);

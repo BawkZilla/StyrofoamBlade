@@ -38,6 +38,7 @@ public class MeleeAttackManager : MonoBehaviour
                 {
                     if (check.isParrySuccess)
                     {
+                        EffectManager.instance.SpawnEffect(E_EffectType.Parry, col.transform.position);
                         currentDamage = 0f;
                         GetComponentInParent<EnemyStateManager>().TransitionToState(new StunState());
                     }
