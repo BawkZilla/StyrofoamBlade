@@ -1478,6 +1478,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2563819264598784467, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1262819596}
+    - targetCorrespondingSourceObject: {fileID: 2563819264598784467, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1262819602}
     - targetCorrespondingSourceObject: {fileID: 2688302709156644989, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1289785122}
@@ -1529,6 +1532,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca948986f49d864082e18a2d95a3b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1262819602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262819595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae272bf9bbee474091066ac93b32505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGuard: 0
+  GuardingTime: 0
 --- !u!1 &1289785119 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2688302709156644989, guid: 2bbef5fdbe881eb4998390a9ae1d4e4d, type: 3}
@@ -2381,6 +2398,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7439282225755674202, guid: 83c02e018e7481548872edd4f8fc9c29, type: 3}
       insertIndex: -1
       addedObject: {fileID: 376866184296696379}
+    - targetCorrespondingSourceObject: {fileID: 7439282225755674202, guid: 83c02e018e7481548872edd4f8fc9c29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376866184296696380}
     - targetCorrespondingSourceObject: {fileID: 6118499075847024416, guid: 83c02e018e7481548872edd4f8fc9c29, type: 3}
       insertIndex: -1
       addedObject: {fileID: 536367620}
@@ -2411,6 +2431,20 @@ MonoBehaviour:
   MaxHP: 100
   CurrentSkillGauge: 0
   MaxSkillGauge: 0
+--- !u!114 &376866184296696380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376866184296696370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e44ce0efe5f5de44986ee69a3922391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parryingSucessTimeRange: {x: 0, y: 0.2}
+  _normalGuardTime: 0.2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

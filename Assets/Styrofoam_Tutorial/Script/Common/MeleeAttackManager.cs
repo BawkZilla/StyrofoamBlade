@@ -30,8 +30,20 @@ public class MeleeAttackManager : MonoBehaviour
 
             if (hp != null && !_hitObjs.Contains(col.gameObject))
             {
+                float currentDamage = damage;
+
                 _hitObjs.Add(col.gameObject);
-                hp.TakeDamage(damage);
+
+                if(transform.root.TryGetComponent<EnemyAttackTimeCheck>(out var check))
+                {
+                    if (check.isParrySuccess)
+                    {
+                        currentDamage = 0f;
+                        GetComponentInParent<EnemyStateManager>().TransitionToState(new StunState());
+                    }
+                    else if (check.isNormalGuard) currentDamage /= 2f;
+                }
+                hp.TakeDamage(currentDamage);
             }
         }
     }

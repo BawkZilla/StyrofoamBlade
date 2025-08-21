@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -24,6 +23,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float _rollDuration = .4f;
     [SerializeField] float _rollCooldown = .5f;
 
+    PlayerGuard _playerGuard;
+    MeleeAttackManager _meleeAttack;
+
     int _playerDir = 1;
 
     bool _isRolling = false;
@@ -33,6 +35,8 @@ public class PlayerMove : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _playerGuard = GetComponent<PlayerGuard>();
+        _meleeAttack = GetComponentInChildren<MeleeAttackManager>();
     }
 
     void Update()
@@ -57,6 +61,12 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         if (_isRolling) return;
+
+        if (_playerGuard.isGuard || _meleeAttack.isAttacking)
+        {
+            _rb.linearVelocityX = 0f;
+            return;
+        }
 
         _xHor = Input.GetAxis("Horizontal");
         _isRunning = Input.GetButton("Sprint");
