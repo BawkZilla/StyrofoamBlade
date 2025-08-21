@@ -7,7 +7,7 @@ public class StunState : IEnemyState
 
     public void EnterState(EnemyStateManager enemy)
     {
-        enemy.GetComponent<Animator>().Play("Stun");
+        enemy.GetComponent<Animator>().SetTrigger("Stun");
         _timer = 0f;
     }
 
