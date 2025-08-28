@@ -10,6 +10,8 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D _rb;
 
+    EnemySight _sight;
+
     float _maxHP, _currentHP;
 
     void Start()
@@ -20,6 +22,7 @@ public class EnemyStateManager : MonoBehaviour
 
     void AllocateComponents()
     {
+        _sight = GetComponent<EnemySight>();
         _rb = GetComponent<Rigidbody2D>();
         Player = FindAnyObjectByType<PlayerMove>()?.transform;
     }
@@ -27,6 +30,8 @@ public class EnemyStateManager : MonoBehaviour
     void Update()
     {
         CurrentState?.UpdateState(this);
+        _sight?.SetDefaultFacingRight(Player.position.x > (Avatar ? Avatar.position.x : transform.position.x));
+
     }
 
     private void FixedUpdate()

@@ -5,25 +5,42 @@ public class EnemySight : MonoBehaviour
     [Header("Sight")]
     public Transform eyeTransform;
 
+    [SerializeField] bool defaultFacingRight = false;
+
     Transform player;
     EnemyDataManager _dataManager;
-    EnemyData EnemyData;
+    EnemyData _enemyData;
 
     void Start()
     {
         _dataManager = GetComponent<EnemyDataManager>();
-        player = FindAnyObjectByType<PlayerMove>().transform;
-        EnemyData = _dataManager._enemyData;
+        _enemyData = _dataManager._enemyData;
+
+        var p = FindAnyObjectByType<PlayerMove>();
+        if (p != null) player = p.transform;
     }
 
     public bool IsPlayerInRange()
     {
-        float dist = Vector2.Distance(player.position, transform.position);
+        if (player == null) return false;
 
-        float dx = player.position.x - transform.position.x;
-        float forward = -Mathf.Sign(transform.localScale.x);
-        bool isFacing = dx * forward > 0f;
+        Vector3 origin = eyeTransform ? eyeTransform.position : transform.position;
 
-        return isFacing && dist <= GetComponent<EnemyDataManager>()._enemyData.SightRange;
+        float dist = Vector2.Distance(player.position, origin);
+        float dx = player.position.x - origin.x;
+
+        float forward = GetForwardSign();
+        bool isFacing = (dx * forward) > 0f;
+
+        return isFacing && dist <= _enemyData.SightRange;
+    }
+    public void SetDefaultFacingRight(bool v) { defaultFacingRight = v; }
+
+    float GetForwardSign()
+    {
+        float scl = Mathf.Sign(transform.lossyScale.x);
+        float baseDir = defaultFacingRight ? 1f : -1f;
+        float f = scl * baseDir;
+        return (f >= 0f) ? 1f : -1f;
     }
 }

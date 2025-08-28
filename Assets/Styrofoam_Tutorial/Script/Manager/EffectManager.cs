@@ -11,7 +11,7 @@ public class EffectManager : MonoBehaviour
 {
     public static EffectManager instance { get; private set; }
 
-    public GameObject ParryEffect;
+    public GameObject ParryEffect, HitEffect, HealEffect;
 
     private void Awake()
     {
@@ -31,7 +31,22 @@ public class EffectManager : MonoBehaviour
         switch(type)
         {
             case E_EffectType.Parry:
-                Instantiate(ParryEffect, spawnPos, Quaternion.identity);
+                if (ParryEffect)
+                {
+                    Instantiate(ParryEffect, spawnPos, Quaternion.identity);
+                }
+                break;
+            case E_EffectType.Hit:
+                if (HitEffect)
+                {
+                    Instantiate(ParryEffect, spawnPos, Quaternion.identity);
+                }
+                break;
+            case E_EffectType.Heal:
+                if (HealEffect)
+                {
+                    Instantiate(ParryEffect, spawnPos, Quaternion.identity);
+                }
                 break;
         }
     }

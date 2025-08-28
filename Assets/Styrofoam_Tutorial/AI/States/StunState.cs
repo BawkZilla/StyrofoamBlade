@@ -13,6 +13,8 @@ public class StunState : IEnemyState
 
     public void ExitState(EnemyStateManager enemy)
     {
+        enemy.GetComponent<EnemyAttackTimeCheck>().isParrySuccess = false;
+        enemy.GetComponent<EnemyAttackTimeCheck>().isNormalGuard = false;
 
     }
 

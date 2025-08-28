@@ -26,7 +26,8 @@ public class PlayerMove : MonoBehaviour
     PlayerGuard _playerGuard;
     MeleeAttackManager _meleeAttack;
 
-    int _playerDir = 1;
+    int _playerDir = 1; 
+    Vector3 _baseScale; 
 
     bool _isRolling = false;
     bool _canRoll = true;
@@ -37,6 +38,10 @@ public class PlayerMove : MonoBehaviour
         _anim = GetComponent<Animator>();
         _playerGuard = GetComponent<PlayerGuard>();
         _meleeAttack = GetComponentInChildren<MeleeAttackManager>();
+
+        _baseScale = transform.localScale;
+        _playerDir = (_baseScale.x >= 0f) ? 1 : -1;
+        ApplyFacingScale();
     }
 
     void Update()
@@ -72,25 +77,16 @@ public class PlayerMove : MonoBehaviour
         _isRunning = Input.GetButton("Sprint");
         _rb.linearVelocity = new Vector2(_xHor * _moveSpeed * (_isRunning ? 2 : 1), _rb.linearVelocity.y);
 
-        if (_xHor > 0)
+        if (_xHor > 0f)
         {
-            _playerDir = 1;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            SetFacing(1);
         }
-        else if (_xHor < 0)
+        else if (_xHor < 0f)
         {
-            _playerDir = -1;
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            SetFacing(-1);
         }
 
-        if (_xHor != 0)
-        {
-            _animSpeed = _isRunning ? 1f : 0.5f;
-        }
-        else
-        {
-            _animSpeed = 0f;
-        }
+        _animSpeed = (_xHor != 0f) ? (_isRunning ? 1f : 0.5f) : 0f;
         _anim.SetFloat("_speed", _animSpeed);
     }
 
@@ -101,6 +97,7 @@ public class PlayerMove : MonoBehaviour
             _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
     }
+
     void AddDownForce()
     {
         _rb.AddForce(Vector2.down * _downForce);
@@ -140,5 +137,21 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(_rollCooldown);
 
         _canRoll = true;
+    }
+
+    public void SetFacing(int dir)
+    {
+        int s = Mathf.Clamp(dir, -1, 1);
+        if (s == 0) s = 1;
+        if (_playerDir == s) return;
+
+        _playerDir = s;
+        ApplyFacingScale();
+    }
+
+    void ApplyFacingScale()
+    {
+        float absX = Mathf.Abs(_baseScale.x);
+        transform.localScale = new Vector3(absX * _playerDir, _baseScale.y, _baseScale.z);
     }
 }

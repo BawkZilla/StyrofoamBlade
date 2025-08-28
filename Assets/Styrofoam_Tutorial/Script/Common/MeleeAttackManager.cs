@@ -39,8 +39,8 @@ public class MeleeAttackManager : MonoBehaviour
                     if (check.isParrySuccess)
                     {
                         Camera.main.GetComponent<CameraShake>().Shake(5f, .3f);
-                        TimeScaleManager.Instance.SetScaleForThenRecover(.2f, .5f, .5f);
-                        EffectManager.instance.SpawnEffect(E_EffectType.Parry, col.transform.position);
+                        TimeScaleManager.Instance.SetScaleForThenRecover(.2f, .1f, .2f);
+                        EffectManager.instance.SpawnEffect(E_EffectType.Parry ,(transform.position + col.transform.position) / 2);
                         currentDamage = 0f;
                         GetComponentInParent<EnemyStateManager>().TransitionToState(new StunState());
                     }
