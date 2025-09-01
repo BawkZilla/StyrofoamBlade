@@ -2,14 +2,9 @@ using UnityEngine;
 
 public abstract class SkillBase : MonoBehaviour, ISkill
 {
-    [SerializeField] protected float coolDown = 4f;
+    [SerializeField] float coolDown = 3f;
 
-    protected float _nextReadyTime;
-
-    public float CoolDown
-    {
-        get { return coolDown; }
-    }
+    float _nextReadyTime;
 
     public bool IsReady
     {
@@ -29,9 +24,4 @@ public abstract class SkillBase : MonoBehaviour, ISkill
     }
 
     protected abstract void OnCast(); 
-
-    public float GetCooldownRemain()
-    {
-        return Mathf.Max(0f, _nextReadyTime - Time.time);
-    }
 }

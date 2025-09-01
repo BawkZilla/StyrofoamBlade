@@ -18,6 +18,7 @@ public class TimeScaleManager : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     void OnDisable()

@@ -5,8 +5,8 @@ public class PlayerSkillManager : MonoBehaviour
 {
     [SerializeField] List<SkillBase> skillSlots = new List<SkillBase>();
 
-    [SerializeField] KeyCode _skill1Key = KeyCode.Q; // ½½·Ô 0
-    [SerializeField] KeyCode _skill2Key = KeyCode.E; // ½½·Ô 1
+    [SerializeField] KeyCode _skill1Key = KeyCode.Q;
+    [SerializeField] KeyCode _skill2Key = KeyCode.E;
 
     void Update()
     {

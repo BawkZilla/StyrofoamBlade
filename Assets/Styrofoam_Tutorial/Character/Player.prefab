@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 8465861916291623635}
   - component: {fileID: 966336232060966089}
   - component: {fileID: 8556487742345243442}
+  - component: {fileID: 1761519722421903257}
   - component: {fileID: 3618937102806627724}
   m_Layer: 6
   m_Name: Player
@@ -262,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSlots:
   - {fileID: 8556487742345243442}
+  - {fileID: 1761519722421903257}
   _skill1Key: 113
   _skill2Key: 101
 --- !u!114 &8556487742345243442
@@ -284,13 +286,35 @@ MonoBehaviour:
   _blockMask:
     serializedVersion: 2
     m_Bits: 9
-  _damage: 20
+  _damage: 35
   _enemyMask:
     serializedVersion: 2
     m_Bits: 128
   _pathHitBox: {x: 0.9, y: 1.4}
   _dashStartEffect: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   _dashEndEffect: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
+--- !u!114 &1761519722421903257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563819264598784467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf249fd8ebfc18740ad6dfa2c5aea967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDown: 1
+  _radius: 3
+  _centerOffset: {x: 0, y: 0}
+  _damage: 50
+  _enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _gizmoColor: {r: 1, g: 0.5, b: 0, a: 0.6}
+  _drawGizmoAlways: 1
+  _bombEffect: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
 --- !u!96 &3618937102806627724
 TrailRenderer:
   serializedVersion: 3
@@ -336,7 +360,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3

@@ -5,6 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SkillThunderFlash : SkillBase
 {
+    #region Variables
     [Header("Dash")]
     [SerializeField] float _dashDistance = 6f;
     [SerializeField] float _dashTime = 0.08f;
@@ -24,18 +25,20 @@ public class SkillThunderFlash : SkillBase
     Rigidbody2D _rb;
     TrailRenderer _trail;
     bool _running;
+    #endregion
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _trail = GetComponent<TrailRenderer>();
     }
+
     protected override void OnCast()
     {
-        StartCoroutine(C_Dash());
+        StartCoroutine(DashSkillCoroutine());
     }
 
-    IEnumerator C_Dash()
+    IEnumerator DashSkillCoroutine()
     {
         if(_dashStartEffect) Instantiate(_dashStartEffect, transform.position, Quaternion.identity);
 
@@ -77,7 +80,7 @@ public class SkillThunderFlash : SkillBase
 
         if (_dashEndEffect) Instantiate(_dashEndEffect, transform.position, Quaternion.identity);
     }
-
+    #region Methods
     int GetFacing()
     {
         return transform.localScale.x >= 0f ? 1 : -1;
@@ -118,4 +121,5 @@ public class SkillThunderFlash : SkillBase
             Physics2D.IgnoreLayerCollision(playerLayer, layer, on);
         }
     }
+    #endregion
 }
