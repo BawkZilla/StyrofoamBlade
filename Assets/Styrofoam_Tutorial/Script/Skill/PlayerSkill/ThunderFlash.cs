@@ -24,7 +24,6 @@ public class SkillThunderFlash : SkillBase
 
     Rigidbody2D _rb;
     TrailRenderer _trail;
-    bool _running;
     #endregion
 
     void Awake()
@@ -43,8 +42,6 @@ public class SkillThunderFlash : SkillBase
         if(_dashStartEffect) Instantiate(_dashStartEffect, transform.position, Quaternion.identity);
 
         _trail.enabled = true;
-
-        _running = true;
 
         int facing = GetFacing();
         Vector2 dir = Vector2.right * facing;
@@ -73,8 +70,6 @@ public class SkillThunderFlash : SkillBase
 
         ToggleIgnoreEnemyLayers(false);
         ApplyPathDamage(pathHits);
-
-        _running = false;
 
         _trail.enabled = false;
 

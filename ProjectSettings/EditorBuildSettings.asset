@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Styrofoam_Tutorial/Scene/Stage1.unity
+    guid: 45753315e4890dd43b07cc46adeb0380
+  - enabled: 1
+    path: Assets/Styrofoam_Tutorial/Scene/Stage2.unity
+    guid: eb1ef5d185e486e41bfc1f1135daced5
+  - enabled: 1
+    path: Assets/Styrofoam_Tutorial/Scene/Treasure.unity
+    guid: 3cefcac037c9e3941a033f3723cd07a4
+  - enabled: 1
+    path: Assets/Styrofoam_Tutorial/Scene/Boss.unity
+    guid: dacd57b0042b1234cbd67b5711e29315
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

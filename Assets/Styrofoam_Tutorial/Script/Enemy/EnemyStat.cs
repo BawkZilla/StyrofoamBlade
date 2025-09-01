@@ -22,7 +22,11 @@ public class EnemyStat : StatBehaviour
 
     public override void Die()
     {
+        GetComponent<Collider2D>().enabled = false;
         GetComponent<Animator>().Play("Die");
+
+        StageManager.instance.OnEnemyDied();
+
         Destroy(gameObject, 1f);
     }
 
